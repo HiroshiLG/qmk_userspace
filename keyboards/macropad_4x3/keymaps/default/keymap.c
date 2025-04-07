@@ -1,12 +1,117 @@
-// Copyright 2023 QMK
-// SPDX-License-Identifier: GPL-2.0-or-later
-
 #include QMK_KEYBOARD_H
+#include <stdio.h>
+#include "layout.h"
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT_ortho_4x3(
-        KC_P7,   KC_P8,   KC_P9,   KC_PSLS,
-        KC_P4,   KC_P5,   KC_P6,   KC_PAST,
-        KC_P1,   KC_P2,   KC_P3,   KC_PMNS
-    )
+enum custom_keycodes {
+    KC_SUPPLY,
+    KC_GSENTRY,
+    KC_GDROVER
 };
+
+/*/ Tap Dance declarations
+enum {
+    TD_LCMK,
+    TD_RCMK,
+    TD_NUM,
+    TD_ARS,
+};*/
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_SUPPLY:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        case KC_GSENTRY:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_LEFT)
+                    SS_DELAY(157)
+                    SS_UP(X_LEFT)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        case KC_GDROVER:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_LEFT)
+                    SS_DELAY(157)
+                    SS_UP(X_LEFT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+    }
+    return true;
+};
+
+/* COMBOS
+const uint16_t PROGMEM CMB_B[] = {KC_O, KC_E, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(CMB_B, KC_B),
+    COMBO(test_combo2, LCTL(KC_Z)), // keycodes with modifiers are possible too!
+};*/
