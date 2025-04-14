@@ -2,9 +2,17 @@
 #include <stdio.h>
 
 enum custom_keycodes {
-    KC_SUPPLY = SAFE_RANGE,
+    // Aereal Attacks
+    KC_CLUSTBOMB,
+    KC_500KBOMB,
+    // Support
+    KC_SUPPLY,
+    KC_GUARDDOG,
     KC_GSENTRY,
-    KC_GDROVER
+    // Weapons
+    KC_GRLAUNCH,
+    KC_RAILGUN,
+    KC_ANTIMAT
 };
 
 /*/ Tap Dance declarations
@@ -19,6 +27,72 @@ enum {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        /******************************
+           AEREAL ATTACKS STRATAGEMS
+        ******************************/
+        case KC_CLUSTBOMB:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        case KC_500KBOMB:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        /***********************
+           SUPPORT STRATAGEMS
+        ***********************/
         case KC_SUPPLY:
             if (record->event.pressed) {
                 SEND_STRING(
@@ -41,6 +115,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 				    SS_DOWN(X_RIGHT)
                     SS_DELAY(157)
                     SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        case KC_GUARDDOG:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_LEFT)
+                    SS_DELAY(157)
+                    SS_UP(X_LEFT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
                     SS_DELAY(127)
                 );
             }
@@ -71,13 +179,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 );
             }
             return false;
-        case KC_GDROVER:
+        /**********************
+           WEAPON STRATAGEMS
+        **********************/
+        case KC_GRLAUNCH:
             if (record->event.pressed) {
                 SEND_STRING(
                     SS_DOWN(X_LCTL)
                     SS_DELAY(157)
                     SS_UP(X_LCTL)
                     SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_LEFT)
+                    SS_DELAY(157)
+                    SS_UP(X_LEFT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_UP)
+                    SS_DELAY(157)
+                    SS_UP(X_UP)
+                    SS_DELAY(127)
+				    SS_DOWN(X_LEFT)
+                    SS_DELAY(157)
+                    SS_UP(X_LEFT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        case KC_RAILGUN:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
 				    SS_DOWN(X_DOWN)
                     SS_DELAY(157)
                     SS_UP(X_DOWN)
@@ -90,17 +239,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     SS_DELAY(157)
                     SS_UP(X_LEFT)
                     SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
+                );
+            }
+            return false;
+        case KC_ANTIMAT:
+            if (record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LCTL)
+                    SS_DELAY(157)
+                    SS_UP(X_LCTL)
+                    SS_DELAY(427)
+				    SS_DOWN(X_DOWN)
+                    SS_DELAY(157)
+                    SS_UP(X_DOWN)
+                    SS_DELAY(127)
+				    SS_DOWN(X_LEFT)
+                    SS_DELAY(157)
+                    SS_UP(X_LEFT)
+                    SS_DELAY(127)
+				    SS_DOWN(X_RIGHT)
+                    SS_DELAY(157)
+                    SS_UP(X_RIGHT)
+                    SS_DELAY(127)
 				    SS_DOWN(X_UP)
                     SS_DELAY(157)
                     SS_UP(X_UP)
                     SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
+				    SS_DOWN(X_DOWN)
                     SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
+                    SS_UP(X_DOWN)
                     SS_DELAY(127)
                 );
             }
