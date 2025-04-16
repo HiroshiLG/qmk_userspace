@@ -12,7 +12,9 @@ enum custom_keycodes {
     // Weapons
     KC_GRLAUNCH,
     KC_RAILGUN,
-    KC_ANTIMAT
+    KC_ANTIMAT,
+    // Unassigned
+    KC_NOTAKEY
 };
 
 /*/ Tap Dance declarations
@@ -276,7 +278,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 );
             }
             return false;
-    }
+         case KC_NOTAKEY:
+            if (record->event.pressed) {
+                // DO NOTHING
+            }
+            return false;
+   }
     return true;
 };
 
