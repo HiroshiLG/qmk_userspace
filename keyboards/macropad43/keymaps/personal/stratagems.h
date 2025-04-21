@@ -1,0 +1,7 @@
+// FUNCIONES PARA LLAMAR LAS STRATAGEMAS
+#ifndef SEND_STRATAGEM_H
+#define SEND_STRATAGEM_H
+
+void send_eagles(int);
+
+#endif // SEND_STRATAGEM_H
