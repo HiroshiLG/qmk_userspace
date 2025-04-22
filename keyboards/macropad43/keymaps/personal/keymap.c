@@ -2,20 +2,19 @@
 #include <stdio.h>
 
 enum custom_keycodes {
-    // Aereal Attacks
-    KC_SENDEAGLES,
-    KC_CLUSTBOMB,
-    KC_500KBOMB,
-    // Support
-    KC_SUPPLY,
-    KC_GUARDDOG,
-    KC_GSENTRY,
-    // Weapons
-    KC_GRLAUNCH,
-    KC_RAILGUN,
-    KC_ANTIMAT,
-    // Unassigned
-    KC_NOTAKEY
+    // Key definition as a matrix (col, row)
+    KC_00,
+    KC_01,
+    KC_02,
+    KC_10,
+    KC_11,
+    KC_12,
+    KC_20,
+    KC_21,
+    KC_22,
+    KC_30,
+    KC_31,
+    KC_32
 };
 
 /*/ Tap Dance declarations
@@ -32,249 +31,44 @@ enum {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record ->event.pressed){
         switch (keycode) {
-            /******************************
-               AEREAL ATTACKS STRATAGEMS
-            ******************************/
-            case KC_SENDEAGLES:
-                send_eagles(1);
+            case KC_00:
+                eagle_attack(6);
                 return false;
-            case KC_CLUSTBOMB:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-                );
+            case KC_01:
+                send_support(1);
                 return false;
-            case KC_500KBOMB:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-                );
+            case KC_02:
+                weapon_support(1);
                 return false;
-            /*********************
-              SUPPORT STRATAGEMS
-            *********************/
-            case KC_SUPPLY:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-                );
+            case KC_10:
+                eagle_attack(7);
                 return false;
-            case KC_GUARDDOG:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_LEFT)
-                    SS_DELAY(157)
-                    SS_UP(X_LEFT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-                );
+            case KC_11:
+                send_support(9);
                 return false;
-            case KC_GSENTRY:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_LEFT)
-                    SS_DELAY(157)
-                    SS_UP(X_LEFT)
-                    SS_DELAY(127)
-                );
+            case KC_12:
+                weapon_support(5);
                 return false;
-            /********************
-              WEAPON STRATAGEMS
-            ********************/
-            case KC_GRLAUNCH:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_LEFT)
-                    SS_DELAY(157)
-                    SS_UP(X_LEFT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_LEFT)
-                    SS_DELAY(157)
-                    SS_UP(X_LEFT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-                );
+            case KC_20:
                 return false;
-            case KC_RAILGUN:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_LEFT)
-                    SS_DELAY(157)
-                    SS_UP(X_LEFT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-                );
+            case KC_21:
+                sentry_attack(2);
                 return false;
-            case KC_ANTIMAT:
-                SEND_STRING(
-                    SS_DOWN(X_LCTL)
-                    SS_DELAY(157)
-                    SS_UP(X_LCTL)
-                    SS_DELAY(427)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-				    SS_DOWN(X_LEFT)
-                    SS_DELAY(157)
-                    SS_UP(X_LEFT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_RIGHT)
-                    SS_DELAY(157)
-                    SS_UP(X_RIGHT)
-                    SS_DELAY(127)
-				    SS_DOWN(X_UP)
-                    SS_DELAY(157)
-                    SS_UP(X_UP)
-                    SS_DELAY(127)
-				    SS_DOWN(X_DOWN)
-                    SS_DELAY(157)
-                    SS_UP(X_DOWN)
-                    SS_DELAY(127)
-                );
+            case KC_22:
+                weapon_support(6);
                 return false;
-            case KC_NOTAKEY:
-                // DO NOTHING
+            case KC_30:
+                return false;
+            case KC_31:
+                return false;
+            case KC_32:
                 return false;
         }
     }
     return true;
 };
+
+#include "stratagems.c"
 
 /* COMBOS
 const uint16_t PROGMEM CMB_B[] = {KC_O, KC_E, COMBO_END};
@@ -283,4 +77,3 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(CMB_B, KC_B),
     COMBO(test_combo2, LCTL(KC_Z)), // keycodes with modifiers are possible too!
 };*/
-#include "stratagems.c"
