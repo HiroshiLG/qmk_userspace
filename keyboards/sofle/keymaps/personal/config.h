@@ -13,6 +13,7 @@ for more options.
 #define LAYER_STATE_8BIT // Up to 8 layers
 //#define MASTER_RIGHT // Right side of the keyboard as master
 #define RGBLIGHT_SPLIT
+#define RGBLIGHT_LED_COUNT 12
 #define RGBLIGHT_LIMIT_VAL 160 //Power draw may exceed 0.6A at max brightness with white colour.
 #define RGBLIGHT_LAYERS
 #define SPLIT_LED_STATE_ENABLE
@@ -22,7 +23,6 @@ for more options.
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_EFFECT_BREATHING
 #define RGBLIGHT_EFFECT_BREATHE_MAX 160
-#define RGBLED_NUM 12
 #define RGBLED_SPLIT {6,6}
 #define RGB_DI_PIN D3
 
@@ -40,7 +40,7 @@ for more options.
 //#define TWISTED_LAYOUT // Comment for using left usb
 
 // Tapdancing
-#define TAPPING_TERM 200
+//#define TAPPING_TERM 200
 
 // Disable leds animations
 #ifdef RGB_MATRIX_ENABLE

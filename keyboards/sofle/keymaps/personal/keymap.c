@@ -28,23 +28,6 @@ enum custom_keycodes {
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
-    KC_PLOWER,
-    KC_PRAISE,
-};
-
-// Tap Dance declarations
-enum {
-    TD_LCMK,
-    TD_RCMK,
-    TD_NUM,
-    TD_ARS,
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_LCMK] = ACTION_TAP_DANCE_LAYER_MOVE(KC_LCTRL, _COLEMAK),
-    [TD_RCMK] = ACTION_TAP_DANCE_LAYER_MOVE(KC_RCTRL, _COLEMAK),
-    [TD_NUM]  = ACTION_TAP_DANCE_LAYER_MOVE(KC_LCTRL, _LOWER),
-    [TD_ARS]  = ACTION_TAP_DANCE_LAYER_MOVE(KC_RCTRL, _RAISE),
 };
 
 #include "layout.h"
@@ -75,16 +58,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(_RAISE);
                 update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-        case KC_PLOWER:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_LOWER);
-            }
-            return false;
-        case KC_PRAISE:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_RAISE);
             }
             return false;
         case KC_ADJUST:
