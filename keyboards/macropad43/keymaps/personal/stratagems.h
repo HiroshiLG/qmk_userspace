@@ -2,6 +2,8 @@
 #ifndef SEND_STRATAGEM_H
 #define SEND_STRATAGEM_H
 
+// FUNCIONES PARA LLAMAR LAS STRATAGEMAS
+void execute_order(int, int);
 void orbital_attack(int);
 void eagle_attack(int);
 void sentry_attack(int);
