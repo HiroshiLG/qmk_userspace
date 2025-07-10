@@ -1,5 +1,5 @@
-![SofleKeyboard personal keymap](https://github.com/HiroshiLG/qmk_firmware/blob/personal-layout/keyboards/crkbd/keymaps/personal/crkbd.png)
-![SofleKeyboard adjust layer](https://github.com/HiroshiLG/qmk_firmware/blob/personal-layout/keyboards/crkbd/keymaps/personal/crkbd-adjust.png)
+![SofleKeyboard personal keymap](https://github.com/HiroshiLG/qmk_userspace/blob/personal-layouts/keyboards/crkbd/keymaps/personal/crkbd.png)
+![SofleKeyboard adjust layer](https://github.com/HiroshiLG/qmk_userspace/blob/personal-layouts/keyboards/crkbd/keymaps/personal/crkbd-adjust.png)
 
 
 // # for key modifications
